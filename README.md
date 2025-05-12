@@ -14,3 +14,11 @@ Dalam format koneksi AMQP, bagian **_guest_** pertama adalah username yang digun
 ![/slow-RabbitMQ](./images/slow-RabbitMQ.jpg)
 
 Pada gambar tersebut, terlihat ada 60 pesan yang menumpuk dalam _queue_ karena subscriber membutuhkan waktu yang lebih lama untuk memproses setiap event dibandingkan dengan kecepatan publisher dalam mengirimkan pesan. Penumpukan ini terjadi karena ketidakseimbangan antara kecepatan produksi dan konsumsi pesan dalam sistem _message broker_.
+
+## Running at Least Three Subscribers
+
+![/3-subs-RabbitMQ](./images/3-subscriber-RabbitMQ.jpg)
+
+![/3-subs-terminal](./images/3-subscriber-terminal.jpg)
+
+Berdasarkan gambar pertama tersebut, terlihat bahwa _queue_ dikonsumsi dengan kecepatan yang jauh lebih tinggi karena terdapat tiga konsumer (_subscriber_) yang secara bersamaan mengambil pesan dari _queue_, sehingga jumlah pesan dalam antrian berkurang secara signifikan. Pada gambar kedua, dapat diamati bahwa _message broker_ berhasil menyeimbangkan beban dengan mendistribusikan pesan-pesan kepada ketiga konsumer secara merata, di mana setiap konsumer menerima pesan yang berbeda-beda dan pesan yang telah diambil akan dihapus dari _queue_.
