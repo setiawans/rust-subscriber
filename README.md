@@ -8,3 +8,9 @@ AMQP (_Advanced Message Queuing Protocol_) adalah protokol pesan yang memungkink
 > What does it mean? **guest:guest@localhost:5672** , what is the first **_guest_**, and what is the second **_guest_**, and what is **_localhost:5672_** is for?
 
 Dalam format koneksi AMQP, bagian **_guest_** pertama adalah username yang digunakan untuk proses authentication ke server RabbitMQ. Bagian **_guest_** kedua adalah password yang diperlukan untuk verifikasi akses pengguna tersebut. Sementara itu, **_localhost_** merujuk pada hostname server yang menjalankan _message broker_ (dalam hal ini perangkat lokal kita sendiri), dan "5672" adalah nomor port _default_ yang digunakan oleh protokol AMQP untuk melakukan koneksi.
+
+## Simulation Slow Subscriber
+
+![/slow-RabbitMQ](./images/slow-RabbitMQ.jpg)
+
+Pada gambar tersebut, terlihat ada 60 pesan yang menumpuk dalam _queue_ karena subscriber membutuhkan waktu yang lebih lama untuk memproses setiap event dibandingkan dengan kecepatan publisher dalam mengirimkan pesan. Penumpukan ini terjadi karena ketidakseimbangan antara kecepatan produksi dan konsumsi pesan dalam sistem _message broker_.
